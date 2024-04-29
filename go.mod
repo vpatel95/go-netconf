@@ -1,8 +1,9 @@
-module github.com/Juniper/go-netconf
+module github.com/vpatel95/go-netconf
 
 go 1.12
 
 require (
+	github.com/Juniper/go-netconf v0.3.0
 	github.com/google/go-cmp v0.5.1
 	golang.org/x/crypto v0.1.0
 )
