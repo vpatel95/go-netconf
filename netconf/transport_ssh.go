@@ -85,6 +85,7 @@ func (t *TransportSSH) DialWithBasstion(bastion, target string, bastionConf, con
 	if err != nil {
 		return err
 	}
+	defer bastionClient.Close()
 
 	if !strings.Contains(target, ":") {
 		target = fmt.Sprintf("%s:%d", target, sshDefaultPort)
@@ -94,6 +95,7 @@ func (t *TransportSSH) DialWithBasstion(bastion, target string, bastionConf, con
 	if err != nil {
 		return err
 	}
+	defer targetConn.Close()
 
 	ncc, chans, reqs, err := ssh.NewClientConn(targetConn, target, config)
 	if err != nil {
